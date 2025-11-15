@@ -3,7 +3,8 @@
 import ChatInterface from "./components/ChatInterface";
 
 export default function Home() {
-  const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY ?? "";
+  const apiKey =
+    process.env.NEXT_PUBLIC_OPENAI_API_KEY ?? process.env.OPENAI_API_KEY ?? "";
 
   return (
     <div className="flex flex-col h-full">
