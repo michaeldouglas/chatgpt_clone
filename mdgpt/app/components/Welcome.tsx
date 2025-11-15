@@ -9,7 +9,7 @@ const EXAMPLE_PROMPTS = "Quem é o usuário com o id: 1234567890?";
 
 export function WelcomeScreen({ apiKey, handleSend }: WelcomeScreenProps) {
   if (!apiKey.trim()) {
-    return null;
+    return <>Sem chave!</>;
   }
 
   return (
