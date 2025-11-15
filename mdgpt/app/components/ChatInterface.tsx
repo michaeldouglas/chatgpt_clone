@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useMemo } from "react";
 import { type Message } from "@langchain/langgraph-sdk";
 import {
@@ -127,87 +129,7 @@ export default function ChatInterface({ apiKey }: ChatInterfaceProps) {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1 overflow-y-auto px-6 py-8">
-        {stream.messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full">
-            <WelcomeScreen apiKey={apiKey} handleSend={handleSend} />
-          </div>
-        ) : (
-          <div className="max-w-3xl mx-auto space-y-6">
-            {stream.messages
-              .filter((message) => !isToolMessage(message))
-              .map((message, messageIndex) => {
-                const associatedToolCalls = isAIMessage(message)
-                  ? toolCallsByMessage.get(message) || []
-                  : [];
-
-                return (
-                  <div key={message.id || messageIndex}>
-                    {/* Message */}
-                    {extractTextContent(message.content) !== "" && (
-                      <div
-                        className={`flex ${
-                          isHumanMessage(message)
-                            ? "justify-end"
-                            : "justify-start"
-                        }`}
-                      >
-                        <div
-                          className={`max-w-[80%] rounded-lg px-4 py-3 ${
-                            isHumanMessage(message)
-                              ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
-                              : "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-                          }`}
-                        >
-                          <p className="whitespace-pre-wrap">
-                            {extractTextContent(message.content)}
-                            {messageIndex ===
-                              stream.messages.filter((m) => !isToolMessage(m))
-                                .length -
-                                1 &&
-                              isLoading && (
-                                <span className="inline-block w-2 h-4 bg-gray-400 dark:bg-gray-600 ml-1 animate-pulse" />
-                              )}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
-                    {associatedToolCalls.map((toolCallState) => (
-                      <ToolCallBubble
-                        key={toolCallState.toolCall.id}
-                        toolCallState={toolCallState}
-                      />
-                    ))}
-
-                    {errorMessage &&
-                      isAIMessage(message) &&
-                      messageIndex ===
-                        stream.messages.filter((m) => !isToolMessage(m))
-                          .length -
-                          1 && <ErrorBubble error={errorMessage} />}
-                  </div>
-                );
-              })}
-            {isLoading && (
-              <div className="flex justify-center items-center gap-1.5 py-2">
-                <span
-                  className="inline-block w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-dot-wave"
-                  style={{ animationDelay: "0ms" }}
-                />
-                <span
-                  className="inline-block w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-dot-wave"
-                  style={{ animationDelay: "200ms" }}
-                />
-                <span
-                  className="inline-block w-2 h-2 bg-gray-400 dark:bg-gray-600 rounded-full animate-dot-wave"
-                  style={{ animationDelay: "400ms" }}
-                />
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      <div className="flex-1 overflow-y-auto px-6 py-8">dsa</div>
 
       <ChatInput onSubmit={handleInputSubmit} isLoading={isLoading} />
     </div>
