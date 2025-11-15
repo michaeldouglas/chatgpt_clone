@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <div className="flex flex-col h-full">
       <main className="flex-1 flex flex-col overflow-hidden">
+        <p>AQUI: {process.env.ENV_VAR}</p>
         <ChatInterface apiKey={apiKey} />
       </main>
     </div>
