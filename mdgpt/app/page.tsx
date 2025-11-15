@@ -6,7 +6,7 @@ export default function Home() {
   const apiKey =
     process.env.NEXT_PUBLIC_OPENAI_API_KEY ?? process.env.OPENAI_API_KEY ?? "";
 
-  console.log("env", process.env.NEXT_ENVS);
+  console.log("env", process.env.ENV_VAR);
   console.log("apiKey", apiKey);
 
   return (
